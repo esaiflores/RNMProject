@@ -2,12 +2,13 @@ package com.rnm.omdb.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Integer id;
 
     @Column(nullable = false, length = 100)
     private String first_name;
@@ -22,12 +23,22 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    public User() {}
 
-    public long getId() {
-        return id;
+
+    public User(User copy) {
+        this.id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        this.username = copy.username;
+        this.password = copy.password;
+        this.last_name = copy.last_name;
+        this.first_name = copy.first_name;
     }
 
-    public void setId(long id) {
+
+
+    public Integer getId() { return id;}
+
+    public void setId(Integer id) {
         this.id = id;
     }
 
