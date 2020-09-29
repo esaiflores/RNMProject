@@ -20,5 +20,10 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
+
 
 }
