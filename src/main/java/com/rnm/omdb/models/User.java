@@ -2,6 +2,7 @@ package com.rnm.omdb.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
 public class User {
@@ -21,6 +22,33 @@ public class User {
     @Pattern(regexp="^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$",message="Password length must be at least 8 characters with one uppercase letter and one digit")
     @Column(nullable = false)
     private String password;
+
+    public User() {}
+
+    public User(String first_name, String last_name, String username, String password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.username = username;
+        this.password = password;
+
+    }
+
+    public User(long id, String first_name, String last_name, String username, String password) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(User copy) {
+        this.id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        this.username = copy.username;
+        this.password = copy.password;
+        this.last_name = copy.last_name;
+        this.first_name = copy.first_name;
+    }
+
 
 
     public long getId() {

@@ -20,8 +20,5 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/sign-up")
-    public String showSignupForm() {
-        return "/sign-up";
-    }
+
 }
