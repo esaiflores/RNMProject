@@ -8,7 +8,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Integer id;
 
     @Column(nullable = false, length = 100)
     private String first_name;
@@ -25,21 +25,6 @@ public class User {
 
     public User() {}
 
-    public User(String first_name, String last_name, String username, String password) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.username = username;
-        this.password = password;
-
-    }
-
-    public User(long id, String first_name, String last_name, String username, String password) {
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.username = username;
-        this.password = password;
-    }
 
     public User(User copy) {
         this.id = copy.id; // This line is SUPER important! Many things won't work if it's absent
@@ -51,11 +36,9 @@ public class User {
 
 
 
-    public long getId() {
-        return id;
-    }
+    public Integer getId() { return id;}
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
