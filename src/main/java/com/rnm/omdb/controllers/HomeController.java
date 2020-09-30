@@ -25,5 +25,13 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/movie")
+    public String movie() {
+        return "movie";
+    }
+
+    @GetMapping("/favorites")
+    public String favorites() { return "favorites";}
+
 
 }

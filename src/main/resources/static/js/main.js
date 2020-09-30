@@ -9,7 +9,8 @@ $(document).ready(() => {
 });
 
 function getMovies(searchText){
-    axios.get('http://www.omdbapi.com/?apikey=[57d7cffb]&?s='+searchText)
+    let url = "https://www.omdbapi.com/?s=" + searchText + '&apikey=57d7cffb';
+    axios.get(url)
         .then((response) => {
             console.log(response);
             let movies = response.data.Search;
@@ -33,16 +34,18 @@ function getMovies(searchText){
         });
 }
 
+
 function movieSelected(id){
     sessionStorage.setItem('movieId', id);
-    window.location = 'movie.html';
+    window.location = 'movie';
     return false;
 }
 
 function getMovie(){
     let movieId = sessionStorage.getItem('movieId');
+    let url = "https://www.omdbapi.com/?i=" + movieId + '&apikey=57d7cffb';
 
-    axios.get('http://www.omdbapi.com/?apikey=[57d7cffb]&?i='+movieId)
+    axios.get(url)
         .then((response) => {
             console.log(response);
             let movie = response.data;
@@ -62,6 +65,11 @@ function getMovie(){
               <li class="list-group-item"><strong>Director:</strong> ${movie.Director}</li>
               <li class="list-group-item"><strong>Writer:</strong> ${movie.Writer}</li>
               <li class="list-group-item"><strong>Actors:</strong> ${movie.Actors}</li>
+              <li class="list-group-item"><strong>Runtime:</strong> ${movie.Runtime}</li>
+              <button class="btn add-to-favorites">Favorite</button>
+
+
+              
             </ul>
           </div>
         </div>
@@ -71,14 +79,26 @@ function getMovie(){
             ${movie.Plot}
             <hr>
             <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-            <a href="index.html" class="btn btn-default">Go Back To Search</a>
+            <a href="/index" class="btn btn-default">Go Back To Search</a>
           </div>
         </div>
       `;
 
-            $('#movie').html(output);
+            $('#movies').html(output);
         })
         .catch((err) => {
             console.log(err);
         });
+
+
+    function addFavorite(event, movie) {
+        const addToFavoritesButton =
+            event.target.parentElement.querySelector('button.add-to-favorites')
+
+        addToFavoritesButton.addEventListener('click', () => {
+            axios.post('/favorites.json', movie)
+                .then(() => addToFavoritesButton.innerHTML = 'Favorited!')
+                .catch((err) => handleError(err))
+        })
+    }
 }
