@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-
+//These are the routes for the pages when navigating the application
     @GetMapping("/")
     public String welcome() {
         return "login";
     }
 
+//   Ex: Whenever the application goes to /index it will then display the html file for index.html
     @GetMapping("/index")
     public String index() {
         return "index";

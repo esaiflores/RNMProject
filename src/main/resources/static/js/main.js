@@ -8,28 +8,30 @@ $(document).ready(() => {
     });
 });
 
+// the information from the api is going to be searched and is doing so when the id of searchText is activated. it will look through and return the values we want such as poster and title
+
 function getMovies(searchText){
     let url = "https://www.omdbapi.com/?s=" + searchText + '&apikey=57d7cffb';
-    axios.get(url)
+    axios.get(url) // axios is a simpler way of getting the api information
         .then((response) => {
-            console.log(response);
+            console.log(response); // this is to test information is being fetched
             let movies = response.data.Search;
             let output = '';
-            $.each(movies, (index, movie) => {
-                output += `
+            $.each(movies, (index, movie) => { // now injecting html from js into html file
+                output += ` 
           <div class="col-md-3">
             <div class="well text-center">
               <img src="${movie.Poster}">
               <h5 style="color: white">${movie.Title}</h5>
-              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a> <!--This is saying when you click movie details it will get that specific id of the movie and with mapping it will go to movie.html  -->
             </div>
           </div>
         `;
             });
 
-            $('#movies').html(output);
+            $('#movies').html(output); //wherever the id of movies is present then the html we wrote above will be inserted into that area
         })
-        .catch((err) => {
+        .catch((err) => { //if there are errors
             console.log(err);
         });
 }
@@ -41,6 +43,7 @@ function movieSelected(id){
     return false;
 }
 
+// as above we are getting information now for the specific movie id instead of all movies
 function getMovie(){
     let movieId = sessionStorage.getItem('movieId');
     let url = "https://www.omdbapi.com/?i=" + movieId + '&apikey=57d7cffb';
@@ -50,6 +53,7 @@ function getMovie(){
             console.log(response);
             let movie = response.data;
 
+            // the information is how the data is going to be reperesented
             let output =`
         <div class="row">
           <div class="col-md-4 mt-4">

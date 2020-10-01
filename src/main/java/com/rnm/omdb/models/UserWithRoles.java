@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+//this is getting info from user details and providing authorities for people to login
+
 public class UserWithRoles extends User implements UserDetails {
 
     public UserWithRoles(User user) { super(user);}

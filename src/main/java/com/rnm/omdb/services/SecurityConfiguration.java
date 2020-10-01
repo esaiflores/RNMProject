@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -59,21 +60,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/index") // anyone can see the home and the ads pages
+                .antMatchers("/", "/index") // anyone can see the home and the index page
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers(
-                        "/posts/create", // only authenticated users can create posts
-                        "/posts/{id}/edit", // only authenticated users can edit posts
-                        "/posts/{id}/delete", // only authenticated users can delete posts
-                        "/feed/events",
-                        "/my-profile/{id}",
-                        "/profile/{id}/edit",
-                        "/feed/myEvents"
-                )
-                .authenticated()
         ;
     }
 }

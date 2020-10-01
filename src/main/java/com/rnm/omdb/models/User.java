@@ -3,7 +3,7 @@ package com.rnm.omdb.models;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.List;
-
+//This is the table for a user in the mySQL database using spring to define the values
 @Entity
 public class User {
     @Id
@@ -34,7 +34,7 @@ public class User {
         this.first_name = copy.first_name;
     }
 
-
+// These are the getters and setters for the private instances, they are public accessors
 
     public Integer getId() { return id;}
 
