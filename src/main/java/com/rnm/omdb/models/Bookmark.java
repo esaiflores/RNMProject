@@ -40,11 +40,8 @@ public class Bookmark {
         this.ownerId = ownerId;
     }
 
-    @Override
-    public String toString() {
-        return "{" + " id='" + getId() + "'" + ", omdbId='" + getOmdbId() + "'" + ", ownerId='" + getOwnerId() + "'"
-                + "}";
-    }
+    
+
 
 
 
