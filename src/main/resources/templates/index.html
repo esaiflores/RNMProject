@@ -3,23 +3,16 @@
 <head th:replace="fragments/head :: head('Index')"></head>
 
 <body>
+<div class="background">
 
 <header th:replace="fragments/navbar :: indexNavbar"></header>
 
-<!--<div class="d-flex justify-content-center h-100">-->
-<!--    <form id="searchForm" class="search">-->
-<!--        <input type="text" class="search-input" id="searchText" placeholder="search..." name="">-->
-<!--        <a class="search-icon">-->
-<!--            <i class="fa fa-search"></i>-->
-<!--        </a>-->
-<!--    </form>-->
-<!--</div>-->
 
-<div class="container">
-    <div class="jumbotron">
-        <h3 class="text-center">Search For Any Movie</h3>
+
+<div class="d-flex justify-content-center h-100 mb-4">
+    <div class="search">
         <form id="searchForm">
-            <input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+        <input type="text" id="searchText" class="search-input" placeholder="Search Movies..." name=""> <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a>
         </form>
     </div>
 </div>
@@ -29,7 +22,10 @@
     <div id="movies" class="row"></div>
 </div>
 
+<div id="container" class="container"></div>
 
+
+</div>
 
 <script  src="https://code.jquery.com/jquery-3.1.1.min.js"
          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

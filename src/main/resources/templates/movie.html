@@ -2,13 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Index')"></head>
 
-<body>
 
-<div class="container">
+<body>
+<div class="backgroundMovie">
+    <header th:replace="fragments/navbar :: indexNavbar"></header>
+
+    <div class="container">
     <div id="movies" class="well"></div>
 </div>
-
-
+</div>
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
